@@ -1,0 +1,61 @@
+MQTT MOSQUITTO ON WINDOWS
+===============================================================
+Install: https://mosquitto.org/download/
+
+In MQTT there are a few basic concepts that you need to understand:
+    Publish/Subscribe
+    Messages
+    TopicsThe broker is primarily responsible for receiving all messages, filtering the messages, decide who is interested in them and then publishing the message to all subscribed clients.
+    Broker
+
+1.In a publish and subscribe system, a device can publish a message on a topic, or it can be subscribed to a particular topic to receive messages
+    For example Device 1 publishes on a topic.
+    Device 2 is subscribed to the same topic as device 1 is publishing in.
+    So, device 2 receives the message.
+2.Messages are the information that you want to exchange between your devices. Whether it’s a command or data
+3.Topics are the way you register interest for incoming messages or how you specify where you want to publish the message.
+	Topics are represented with strings separated by a forward slash. Each forward slash indicates a topic level. Here’s an example on how you would create a topic for a lamp in your home office:home/office/lamp
+	Note: topics are case-sensitive
+4.The broker is primarily responsible for receiving all messages, filtering the messages, decide who is interested in them and then publishing the message to all subscribed clients.
+
+Other info:
+IPaddress/port
+Username/password/ClientID(must be unique)
+
+================================================================
+For quick test, in separate terminal windows do the following:
+1.Start the broker:     mosquitto
+2.Start the command line subscriber:    mosquitto_sub -v -t test/topic
+3.Publish test message with the command line publisher:     mosquitto_pub -t test/topic -m "Local helloWorld"
+
+
+test with server test.mosquitto.org, in separate terminal windows do the following:
+mosquitto_sub -h test.mosquitto.org -v -t test/topic
+mosquitto_pub -h test.mosquitto.org -t test/topic -m "Internet helloWorld"
+
+for subcribe all topic: mosquitto_sub -v -t #
+for help: moquitto -h
+fro info: moquitto -v
+1588688818: mosquitto version 1.6.9 starting
+1588688818: Using default config.
+1588688818: Opening ipv6 listen socket on port 1883.
+1588688818: Error: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+
+===============================================================
+Running Mosquitto as a Service
+Installing Mosquitto as a Service using Power Shell
+Open a power shell command prompt as administrator
+Change to the directory where you have installed mosquitto and type: ./mosquitto install
+Mosquitto is added but you don’t get any confirmation and it isn’t started but will start on reboot. However you can now start it manually.
+Now open a normal command prompt again as administrator and type the commands:
+sc query mosquitto
+sc start mosquitto
+sc query mosquitto
+
+
+
+mosquitto_sub -h <YourIP> -p 8883 -v -t 'owntracks/#' -u owntracks -P <YourPassword>
+
+
+
+
