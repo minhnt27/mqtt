@@ -34,6 +34,8 @@ mosquitto_sub -h test.mosquitto.org -v -t test/topic
 mosquitto_pub -h test.mosquitto.org -t test/topic -m "Internet helloWorld"
 
 for subcribe all topic: mosquitto_sub -v -t #
+	1. Single Level Wild Card +	.Ex:A ‘+’ character represents a single level of the hierarchy and is used between delimiters. For example “home/+/DHT22/Humidity“
+	2. Multi Level Wild Cards #	
 for help: moquitto -h
 fro info: moquitto -v
 1588688818: mosquitto version 1.6.9 starting
@@ -53,7 +55,9 @@ sc start mosquitto
 sc query mosquitto
 
 
-
+==============================================================
+More ref:
+Using The Mosquitto_pub and Mosquitto_sub MQTT Client Tools- Examples: http://www.steves-internet-guide.com/mosquitto_pub-sub-clients/
 mosquitto_sub -h <YourIP> -p 8883 -v -t 'owntracks/#' -u owntracks -P <YourPassword>
 
 
